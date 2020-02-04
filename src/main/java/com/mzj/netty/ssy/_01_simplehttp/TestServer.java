@@ -1,4 +1,4 @@
-package com.mzj.netty.ssy._01_simple;
+package com.mzj.netty.ssy._01_simplehttp;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
@@ -14,7 +14,7 @@ public class TestServer {
     public static void main(String[] args) throws InterruptedException {
 
         //1.创建boss与worker线程组
-        EventLoopGroup boss = new NioEventLoopGroup();
+        EventLoopGroup boss = new NioEventLoopGroup(1);
         EventLoopGroup worker = new NioEventLoopGroup();
         //2.创建服务器启动辅助类，服务端是 ServerBootstrap
         try {

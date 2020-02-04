@@ -1,4 +1,4 @@
-package com.mzj.netty.ssy._01_simple;
+package com.mzj.netty.ssy._01_simplehttp;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;

@@ -1,4 +1,4 @@
-package com.mzj.netty.ssy._01_simple;
+package com.mzj.netty.ssy._01_simplehttp;
 
 public class TestThread {
     public static void main(String[] args) {
