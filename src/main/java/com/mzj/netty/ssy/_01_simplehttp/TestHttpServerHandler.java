@@ -47,6 +47,11 @@ public class TestHttpServerHandler extends SimpleChannelInboundHandler<HttpObjec
         }
     }
 
+    /**
+     * 客户端与服务端建立好连接时的回调函数
+     * @param ctx
+     * @throws Exception
+     */
     @Override
     public void handlerAdded(ChannelHandlerContext ctx) throws Exception {
         System.out.println("handlerAdded.....");
