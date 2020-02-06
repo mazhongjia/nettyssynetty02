@@ -1,4 +1,4 @@
-package com.mzj.netty.ssy._03.chat;
+package com.mzj.netty.ssy._04.heartbeat;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
@@ -7,6 +7,7 @@ import io.netty.channel.SimpleChannelInboundHandler;
  * 客户端handler
  */
 public class MyChatClientHandler extends SimpleChannelInboundHandler<String> {
+
 
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, String msg) throws Exception {

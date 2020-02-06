@@ -1,4 +1,4 @@
-package com.mzj.netty.ssy._03.chat;
+package com.mzj.netty.ssy._04.heartbeat;
 
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
@@ -10,8 +10,11 @@ import io.netty.handler.codec.string.StringEncoder;
 import io.netty.util.CharsetUtil;
 
 /**
- * Channel初始化器
+ * 客户端Channel初始化器
  *
+ * @Auther: mazhongjia
+ * @Date: 2019/8/14 17:29
+ * @Description:
  */
 public class MyChatClientInitializer extends ChannelInitializer<SocketChannel> {
 
