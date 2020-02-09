@@ -31,6 +31,6 @@ public class WebSocketChannelInitializer extends ChannelInitializer<SocketChanne
          */
         pipline.addLast(new HttpObjectAggregator(8192));//http消息聚合处理器，对http消息进行聚合，形成FullHttpRequest或者FullHttpResponse，参数是最大聚合字节长度
         pipline.addLast(new WebSocketServerProtocolHandler("/ws123"));//netty提供的专门用于处理websocket协议的handler，这里参数是访问websocket的路径，如：ws://localhost:8899/ws
-        pipline.addLast(new TestWebSocketFrameHandler());//自定义的处理器
+        pipline.addLast(new TextWebSocketFrameHandler());//自定义的处理器
     }
 }

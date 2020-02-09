@@ -32,8 +32,21 @@
       <artifactId>netty-all</artifactId>
       <version>4.1.10.Final</version>
     </dependency>
-  </dependencies>
 
+    <!-- protobuf-->
+    <dependency>
+      <groupId>com.google.protobuf</groupId>
+      <artifactId>protobuf-java</artifactId>
+      <version>3.11.0</version>
+    </dependency>
+    <dependency>
+      <groupId>com.google.protobuf</groupId>
+      <artifactId>protobuf-java-util</artifactId>
+      <version>3.11.0</version>
+    </dependency>
+
+
+  </dependencies>
   <build>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
