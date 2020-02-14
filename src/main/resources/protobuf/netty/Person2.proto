@@ -1,0 +1,45 @@
+syntax = "proto2";
+
+package com.shengsiyuan.sixthexample.multyMsgType;
+
+option optimize_for = SPEED;
+option java_package = "com.mzj.netty.ssy._06.protobuf.netty.multyMsgType";
+option java_outer_classname = "MyDataInfo";
+
+message MyMessage{//MyMessage是最外层的消息
+
+                  //通过枚举区分不同的消息类型
+                  enum DataType{
+                      PersionType = 1;
+                      DogType = 2;
+                      CatType = 3;
+                  }
+                  //枚举类型是required类型，用来标识oneof中的类型
+                  required DataType data_type = 1;
+
+                  //oneof相当于一个包裹块
+                  //oneof中成员共享内存
+                  //用oneof包裹的属性用来表示其中的对象只能出现一个，要么Person要么Dog要么Cat
+                  //后设置的会顶替前设置的
+                  oneof dataBody{//其中内部包括其他消息，dataBody的名字不会起作用
+                                 Person person = 2;
+                                 Dog dog = 3;
+                                 Cat cat = 4;
+                  }
+}
+
+message Person {
+    optional string name = 1;
+    optional int32 age = 2;
+    optional string address = 3;
+}
+
+message Dog {
+    optional string name = 1;
+    optional int32 age = 2;
+}
+
+message Cat {
+    optional string name = 1;
+    optional string city = 2;
+}

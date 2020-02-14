@@ -2,6 +2,9 @@ package com.mzj.netty.ssy._06.protobuf;
 
 import com.google.protobuf.InvalidProtocolBufferException;
 
+/**
+ * 对应：resources/Student.proto
+ */
 public class ProtoBufTest {
 
     public static void main(String[] args) throws InvalidProtocolBufferException {
