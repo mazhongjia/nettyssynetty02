@@ -3,7 +3,7 @@ package com.mzj.netty.ssy._06.protobuf.netty.multyMsgType;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 
-public class TestClientrHandler extends SimpleChannelInboundHandler<MyDataInfo.MyMessage> {//范型类型的变化
+public class TestClientHandler extends SimpleChannelInboundHandler<MyDataInfo.MyMessage> {//范型类型的变化
 
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, MyDataInfo.MyMessage msg) throws Exception {

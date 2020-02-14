@@ -22,6 +22,6 @@ public class TestClientInitializer extends ChannelInitializer<SocketChannel> {
         pipline.addLast(new ProtobufVarint32LengthFieldPrepender());
         pipline.addLast(new ProtobufEncoder());
 
-        pipline.addLast(new TestClientrHandler());
+        pipline.addLast(new TestClientHandler());
     }
 }
