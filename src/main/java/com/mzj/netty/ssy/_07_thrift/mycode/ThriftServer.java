@@ -23,8 +23,7 @@ public class ThriftServer {
         PersonService.Processor<PersonServiceImpl> processor = new PersonService.Processor<>(new PersonServiceImpl());
 
         arg.protocolFactory(new TCompactProtocol.Factory());//面向协议层（对应网络7层结构）：决定数据如何进行压缩（解码与编码）
-        arg.transportFactory(new TFramedTransport.Factory());
-        ;//面向传输层（对应网络7层结构）:决定底层以什么形式将数据由一端传给另一端
+        arg.transportFactory(new TFramedTransport.Factory());//面向传输层（对应网络7层结构）:决定底层以什么形式将数据由一端传给另一端
         arg.processorFactory(new TProcessorFactory(processor));
 
         //半同步半异步的Server，（Thrift可以做集群，性能不错）
