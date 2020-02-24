@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+package com.mzj.netty.ssy._08_grpc;
+
+option java_package = "com.mzj.netty.ssy._08_grpc";
+option java_outer_classname = "StudentProto";
+option java_multiple_files = true;
+
+service StudentService{
+    //gRpc支持的四种调用形式示例：
+    rpc GetRealNameByUsername(MyRequest) returns (MyResponse){}//种类1：普通输入参数与返回值
+    rpc GetStudentsByAge(StudentRequest) returns (stream StudentResponse){}//种类2：服务端rpc方法返回值是stream
+    rpc GetStudentsWrapperByAges(stream StudentRequest) returns (StudentResponseList){}//种类3：客户端输入参数是stream
+    rpc BiTalk(stream StreamRequest) returns (stream StreamResponse){}//种类4：双向的流式的数据传递（客户端发送请求/服务端返回结果都是流式）
+
+    //从IDL的定义上，四种调用形式区别体现在rpc定义时方法参数、返回值的message前面是否有stream关键字
+}
+
+message MyRequest{
+    string username = 1;
+}
+
+message MyResponse{
+    string realname = 2;
+}
+
+message StudentRequest{
+    int32 age = 1;
+}
+
+message StudentResponse{
+    string name = 1;
+    int32 age = 2;
+    string city = 3;
+}
+
+message StudentResponseList{
+    repeated StudentResponse studentResponse = 1;//repeated表示集合类型，这里表示服务器端向客户端返回的是一个集合类型，集合中元素是StudentResponse
+}
+
+message StreamRequest{
+    string request_info = 1;
+}
+
+message StreamResponse{
+    string response_info = 1;
+}
