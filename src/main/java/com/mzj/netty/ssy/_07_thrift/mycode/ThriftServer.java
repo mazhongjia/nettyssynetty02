@@ -30,6 +30,8 @@ public class ThriftServer {
         TServer server = new THsHaServer(arg);
 
         //启动服务器，相当于死循环
+        System.out.println("..................");
         server.serve();
+        System.out.println("..................");
     }
 }
