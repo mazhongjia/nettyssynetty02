@@ -9,11 +9,12 @@ option java_multiple_files = true;
 service StudentService{
     //gRpc支持的四种调用形式示例：
     rpc GetRealNameByUsername(MyRequest) returns (MyResponse){}//种类1：普通输入参数与返回值
-    rpc GetStudentsByAge(StudentRequest) returns (stream StudentResponse){}//种类2：服务端rpc方法返回值是stream
-    rpc GetStudentsWrapperByAges(stream StudentRequest) returns (StudentResponseList){}//种类3：客户端输入参数是stream
+    rpc GetStudentsByAge(StudentRequest) returns (stream StudentResponse){}//种类2：服务端rpc方法返回值是stream形式，参数是普通对象
+    rpc GetStudentsWrapperByAges(stream StudentRequest) returns (StudentResponseList){}//种类3：客户端输入参数是stream形式，返回是一个普通对象
     rpc BiTalk(stream StreamRequest) returns (stream StreamResponse){}//种类4：双向的流式的数据传递（客户端发送请求/服务端返回结果都是流式）
 
     //从IDL的定义上，四种调用形式区别体现在rpc定义时方法参数、返回值的message前面是否有stream关键字
+    //rpc方法的参数与返回值类型都是IDL中定义的message类型，而不能是string、int32等变量类型，这一点跟thrift不同，即使只有一个属性，也得定义成message
 }
 
 message MyRequest{
@@ -35,6 +36,7 @@ message StudentResponse{
 }
 
 message StudentResponseList{
+    //protobuf中集合用repeated表示
     repeated StudentResponse studentResponse = 1;//repeated表示集合类型，这里表示服务器端向客户端返回的是一个集合类型，集合中元素是StudentResponse
 }
 
