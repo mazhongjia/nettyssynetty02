@@ -9,24 +9,24 @@ public interface StudentResponseListOrBuilder extends
 
   /**
    * <pre>
-   *repeated表示集合类型，这里表示服务器端向客户端返回的是一个集合类型，集合中元素是StudentResponse
+   *protobuf中集合用repeated表示
    * </pre>
    *
    * <code>repeated .com.mzj.netty.ssy._08_grpc.StudentResponse studentResponse = 1;</code>
    */
-  java.util.List<StudentResponse>
+  java.util.List<com.mzj.netty.ssy._08_grpc.StudentResponse> 
       getStudentResponseList();
   /**
    * <pre>
-   *repeated表示集合类型，这里表示服务器端向客户端返回的是一个集合类型，集合中元素是StudentResponse
+   *protobuf中集合用repeated表示
    * </pre>
    *
    * <code>repeated .com.mzj.netty.ssy._08_grpc.StudentResponse studentResponse = 1;</code>
    */
-  StudentResponse getStudentResponse(int index);
+  com.mzj.netty.ssy._08_grpc.StudentResponse getStudentResponse(int index);
   /**
    * <pre>
-   *repeated表示集合类型，这里表示服务器端向客户端返回的是一个集合类型，集合中元素是StudentResponse
+   *protobuf中集合用repeated表示
    * </pre>
    *
    * <code>repeated .com.mzj.netty.ssy._08_grpc.StudentResponse studentResponse = 1;</code>
@@ -34,20 +34,20 @@ public interface StudentResponseListOrBuilder extends
   int getStudentResponseCount();
   /**
    * <pre>
-   *repeated表示集合类型，这里表示服务器端向客户端返回的是一个集合类型，集合中元素是StudentResponse
+   *protobuf中集合用repeated表示
    * </pre>
    *
    * <code>repeated .com.mzj.netty.ssy._08_grpc.StudentResponse studentResponse = 1;</code>
    */
-  java.util.List<? extends StudentResponseOrBuilder>
+  java.util.List<? extends com.mzj.netty.ssy._08_grpc.StudentResponseOrBuilder> 
       getStudentResponseOrBuilderList();
   /**
    * <pre>
-   *repeated表示集合类型，这里表示服务器端向客户端返回的是一个集合类型，集合中元素是StudentResponse
+   *protobuf中集合用repeated表示
    * </pre>
    *
    * <code>repeated .com.mzj.netty.ssy._08_grpc.StudentResponse studentResponse = 1;</code>
    */
-  StudentResponseOrBuilder getStudentResponseOrBuilder(
-          int index);
+  com.mzj.netty.ssy._08_grpc.StudentResponseOrBuilder getStudentResponseOrBuilder(
+      int index);
 }

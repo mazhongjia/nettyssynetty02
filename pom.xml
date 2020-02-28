@@ -131,6 +131,9 @@
             <protocArtifact>com.google.protobuf:protoc:3.11.0:exe:${os.detected.classifier}</protocArtifact>
             <pluginId>grpc-java</pluginId>
             <pluginArtifact>io.grpc:protoc-gen-grpc-java:1.27.1:exe:${os.detected.classifier}</pluginArtifact>
+            <!--以下两项配置是设置grpc生成代码设置指定路径的-->
+            <outputDirectory>${project.build.sourceDirectory}</outputDirectory>
+            <clearOutputDirectory>false</clearOutputDirectory>
           </configuration>
           <executions>
             <execution>
