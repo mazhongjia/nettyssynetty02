@@ -1,4 +1,4 @@
-package com.mzj.netty.ssy._04.heartbeat;
+package com.mzj.netty.ssy._03_chat;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
@@ -11,9 +11,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
 /**
- * 客户端
- *
- * 本示例中客户端没有任何修改，采用_03.chat的客户端
+ * chat client
  */
 public class MyChatClient {
 
@@ -25,6 +23,7 @@ public class MyChatClient {
 
             bootstrap.group(eventLoopGroup).channel(NioSocketChannel.class).handler(new MyChatClientInitializer());
             ChannelFuture channelFuture = bootstrap.connect("localhost",8899).sync();
+
             //这个聊天程序客户端，一旦建立好与服务器的连接后，就等待从标准输入流中获取一行行的文本
             Channel channel = channelFuture.channel();
 //            channelFuture.channel().closeFuture().sync();

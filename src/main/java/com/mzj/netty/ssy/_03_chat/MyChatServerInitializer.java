@@ -1,4 +1,4 @@
-package com.mzj.netty.ssy._04.heartbeat;
+package com.mzj.netty.ssy._03_chat;
 
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
@@ -10,13 +10,9 @@ import io.netty.handler.codec.string.StringEncoder;
 import io.netty.util.CharsetUtil;
 
 /**
- * 客户端Channel初始化器
- *
- * @Auther: mazhongjia
- * @Date: 2019/8/14 17:29
- * @Description:
+ * 服务端Channel初始化器
  */
-public class MyChatClientInitializer extends ChannelInitializer<SocketChannel> {
+public class MyChatServerInitializer extends ChannelInitializer<SocketChannel> {
 
     @Override
     protected void initChannel(SocketChannel ch) throws Exception {
@@ -25,7 +21,6 @@ public class MyChatClientInitializer extends ChannelInitializer<SocketChannel> {
         pipline.addLast(new DelimiterBasedFrameDecoder(4096, Delimiters.lineDelimiter()));//分隔符解码器
         pipline.addLast(new StringDecoder(CharsetUtil.UTF_8));
         pipline.addLast(new StringEncoder(CharsetUtil.UTF_8));
-        pipline.addLast(new MyChatClientHandler());
-
+        pipline.addLast(new MyChatServerHandler());
     }
 }
