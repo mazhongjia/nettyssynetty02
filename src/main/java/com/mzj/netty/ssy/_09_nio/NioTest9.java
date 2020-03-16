@@ -15,7 +15,7 @@ public class NioTest9 {
 
     public static void main(String[] args) throws IOException {
 
-        FileInputStream iggnputStream = new FileInputStream("input2.txt");
+        FileInputStream inputStream = new FileInputStream("input2.txt");
         FileOutputStream outputStream = new FileOutputStream("output2.txt");
 
         FileChannel inputChannel = inputStream.getChannel();
