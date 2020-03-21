@@ -47,34 +47,35 @@ public class SelectorTest1 {
             serverSocket.bind(address);
 
             //将Channel注册到Selector上，并返回SelectionKey
-            serverSocketChannel.register(selector, SelectionKey.OP_ACCEPT);//参数1：选择器，参数2：selectkey的集合（整形）,当前状态只能选择接受连接这一个
+            serverSocketChannel.register(selector, SelectionKey.OP_ACCEPT);//参数1：选择器，参数2：selectkey的集合（int）,当前状态（服务端未开启连接时）只能选择接受连接这一个
 
             System.out.println("监听端口：" + ports[i]);
         }
 
         while (true) {
             System.out.println("服务端selector等待事件发生.....");
-            int numbers = selector.select();
+            int numbers = selector.select();//返回准备好的（已经发生的事件）的SelectionKey的数量
             System.out.println("numbers：" + numbers);
 
-            Set<SelectionKey> selectionKeys = selector.selectedKeys();
+            Set<SelectionKey> selectionKeys = selector.selectedKeys();//返回This selector's selected-key set，就是已经准备好的（已经发生的事件）集合
 
             Iterator<SelectionKey> iter = selectionKeys.iterator();
 
             while (iter.hasNext()) {
                 SelectionKey selectionKey = iter.next();
 
-                if (selectionKey.isAcceptable()) {//处理客户端连接事件
+                if (selectionKey.isAcceptable()) {//此处只处理客户端连接事件（因为不会有其他事件产生，只有这一种事件）
                     ServerSocketChannel serverSocketChannel = (ServerSocketChannel) selectionKey.channel();//服务端SocketChannel对象（在上面Open的时候已经配置了非阻塞）
-                    //通过ServerSocketChannel的accept方法在有客户端端连接事件时，获取客户端的SocketChannel对象
-                    SocketChannel socketChannel = serverSocketChannel.accept();//客户端SocketChannel对象
+                    //通过ServerSocketChannel的accept方法在有客户端端连接事件时（OP_ACCEPT事件产生时），获取客户端的SocketChannel对象
+                    SocketChannel socketChannel = serverSocketChannel.accept();//获取客户端SocketChannel对象
                     socketChannel.configureBlocking(false);//设置客户端Socket为非阻塞
 
-                    socketChannel.register(selector, SelectionKey.OP_READ);//客户端也使用同一个selector，注册感兴趣事件：读
+                    socketChannel.register(selector, SelectionKey.OP_READ);//客户端也使用同一个selector，注册感兴趣事件：读（这里的读还是写是相对于服务端来说的，这里的读是代表客户端发送给服务端）
                     System.out.println(selector.keys());
-                    iter.remove();//特别重要：处理完一个selectionkey的事件后，必须将这个selectionkey从selectedKeys集合中移除（当前选择器关心的事件类型集合）
+                    iter.remove();//特别重要：处理完一个selectionkey的事件后，必须将这个selectionkey从selectedKeys集合中移除（当前选择器关心的事件类型集合），不然会出问题
 
                     System.out.println("获得客户端连接：" + socketChannel);
+                    //到此已经完成接收客户端连接过程的处理，并且注册了客户端
                 } else if (selectionKey.isReadable()) {//服务端的Read事件：处理来自客户端数据的，读入事件，相当于读取客户端   发   给服务端的数据，这里的Read（包括上面的OP_READ），是相对于服务端的。如果这里理解不好，们可以参考：com.shengsiyuan.nio.niosocket包里的示例理解
                     SocketChannel socketChannel = (SocketChannel) selectionKey.channel();
 
@@ -98,7 +99,7 @@ public class SelectorTest1 {
                     }
                     System.out.println("本次客户端读事件发生后，读取：" + bytesRead + "，来自于：" + socketChannel);
 
-                    iter.remove();//非常重要：处理完一个selectionkey事件，就需要将其在selectionkey集合中删除（表示这个selectionkey事件已经用完、消费掉了）
+                    iter.remove();//非常重要：处理完一个selectionkey事件，就需要将其在selectionkey集合中删除（表示这个selectionkey事件已经用完、消费掉了），不然会出问题
                 }
             }
         }
