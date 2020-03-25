@@ -1,4 +1,4 @@
-package com.mzj.netty.ssy._09_nio.selector;
+package com.mzj.netty.ssy._09_nio._02_selector;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
