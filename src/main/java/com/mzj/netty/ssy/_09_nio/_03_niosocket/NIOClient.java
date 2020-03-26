@@ -86,8 +86,8 @@ public class NIOClient {
                         //客户端连接成功后，注册客户端数据读取事件（用于接收服务端发送给客户端的数据）
                         //这里的read，是相对于客户端来说的，也就是客户端读取到（来自服务端的）数据
                         client.register(selector, SelectionKey.OP_READ);
-                    } else if (selectionKey.isReadable()) {//客户端读取事件（读取服务端向客户端发送的数据）
-                        SocketChannel client = (SocketChannel) selectionKey.channel();
+                    } else if (selectionKey.isReadable()) {//处理客户端读取事件（读取服务端向客户端发送的数据）
+                        SocketChannel client = (SocketChannel) selectionKey.channel();//第一件事永远是将selectionKey获取到的channel进行强制转换
                         ByteBuffer readBuffer = ByteBuffer.allocate(1024);
                         int count = client.read(readBuffer);
 
