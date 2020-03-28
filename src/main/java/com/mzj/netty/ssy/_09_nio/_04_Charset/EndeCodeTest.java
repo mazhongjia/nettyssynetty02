@@ -48,6 +48,7 @@ public class EndeCodeTest {
 
         //解码：对内存映射文件的bytebuffer进行解码（ByteBuffer  ->  CharBuffer）
         CharBuffer charBuffer = decoder.decode(inputData);
+        System.out.println(charBuffer);//此行输出的意义是便于分析使用iso-8859-1解码+编码汉字，没有问题的原因，解码后输出是乱码
         //编码：上面一行解码完的结果再反过来进行编码（CharBuffer  ->  ByteBuffer）
         ByteBuffer outputData = encoder.encode(charBuffer);
 
