@@ -20,7 +20,7 @@ import io.netty.util.concurrent.GlobalEventExecutor;
  */
 public class MyChatServerHandler extends SimpleChannelInboundHandler<String> {//客户端与服务器传输数据类型为字符串
 
-    //使用netty提供的ChannelGroup来保存客户端连接
+    //netty编程中使用ChannelGroup来保存客户端连接
     //好处是：通过操作ChannelGroup，实现对加入到ChannelGroup中的所有的Channel进行统一操作
     private static ChannelGroup channelGroup = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
     //!!!!!!经过测试ChannelGroup channelGroup必须是static的，否则向其加入的channel不在一个group里
