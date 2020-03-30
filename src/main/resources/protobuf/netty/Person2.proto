@@ -6,6 +6,7 @@ option optimize_for = SPEED;
 option java_package = "com.mzj.netty.ssy._06.protobuf.netty.multyMsgType";
 option java_outer_classname = "MyDataInfo";
 
+//protobuf多协议推荐做法
 message MyMessage{//MyMessage是最外层的消息
 
                   //通过枚举区分不同的消息类型
