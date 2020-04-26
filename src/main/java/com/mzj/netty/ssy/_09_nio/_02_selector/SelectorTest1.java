@@ -46,7 +46,7 @@ public class SelectorTest1 {
             //服务器Socke绑定端口
             serverSocket.bind(address);
 
-            //将Channel注册到Selector上，并返回SelectionKey
+            //将5个ServerChannel注册到同1个Selector上，并返回SelectionKey
             serverSocketChannel.register(selector, SelectionKey.OP_ACCEPT);//参数1：选择器，参数2：selectkey的集合（int）,当前状态（服务端未开启连接时）只能选择接受连接这一个
 
             System.out.println("监听端口：" + ports[i]);
